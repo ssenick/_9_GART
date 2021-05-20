@@ -377,6 +377,7 @@ if (iconMenu != null) {
     }
   });
 }
+
 function menu_close() {
   let iconMenu = document.querySelector(".burger");
   let menuBody = document.querySelector(".menu__body");
@@ -384,54 +385,51 @@ function menu_close() {
   menuBody.classList.remove("_active");
 }
 //=================
+//=================
 //BodyLock
 function body_lock(delay) {
-  let body = document.querySelector("body");
-  if (body.classList.contains("_lock")) {
-    body_lock_remove(delay);
-  } else {
-    body_lock_add(delay);
-  }
+	let body = document.querySelector("body");
+	if (body.classList.contains('_lock')) {
+		body_lock_remove(800);
+	} else {
+		body_lock_add(800);
+	}
 }
 function body_lock_remove(delay) {
-  let body = document.querySelector("body");
-  if (unlock) {
-    let lock_padding = document.querySelectorAll("._lp");
-    setTimeout(() => {
-      for (let index = 0; index < lock_padding.length; index++) {
-        const el = lock_padding[index];
-        el.style.paddingRight = "0px";
-      }
-      body.style.paddingRight = "0px";
-      body.classList.remove("_lock");
-    }, delay);
+	let body = document.querySelector("body");
+	if (unlock) {
+		let lock_padding = document.querySelectorAll("._lp");
+		setTimeout(() => {
+			for (let index = 0; index < lock_padding.length; index++) {
+				const el = lock_padding[index];
+				el.style.paddingRight = '0px';
+			}
+			body.style.paddingRight = '0px';
+			body.classList.remove("_lock");
+		}, delay);
 
-    unlock = false;
-    setTimeout(function () {
-      unlock = true;
-    }, delay);
-  }
+		unlock = false;
+		setTimeout(function () {
+			unlock = true;
+		}, delay);
+	}
 }
 function body_lock_add(delay) {
-  let body = document.querySelector("body");
-  if (unlock) {
-    let lock_padding = document.querySelectorAll("._lp");
-    for (let index = 0; index < lock_padding.length; index++) {
-      const el = lock_padding[index];
-      el.style.paddingRight =
-        window.innerWidth -
-        document.querySelector(".wrapper").offsetWidth +
-        "px";
-    }
-    body.style.paddingRight =
-      window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
-    body.classList.add("_lock");
+	let body = document.querySelector("body");
+	if (unlock) {
+		let lock_padding = document.querySelectorAll("._lp");
+		for (let index = 0; index < lock_padding.length; index++) {
+			const el = lock_padding[index];
+			el.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+		}
+		body.style.paddingRight = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+		body.classList.add("_lock");
 
-    unlock = false;
-    setTimeout(function () {
-      unlock = true;
-    }, delay);
-  }
+		unlock = false;
+		setTimeout(function () {
+			unlock = true;
+		}, delay);
+	}
 }
 //=================
 // LettersAnimation
@@ -510,7 +508,7 @@ if (spollers.length > 0) {
 
       setTimeout(function () {
         spollersGo = true;
-      }, 500);
+      }, 800);
     }
   }
   function spollersInit() {
@@ -544,7 +542,7 @@ if (spollers.length > 0) {
   setTimeout(function () {
     spollersShowActive();
     spollersInit();
-  }, 0);
+  }, 800);
 }
 //=================
 //Gallery
@@ -1041,8 +1039,7 @@ animate({
       Element.prototype.mozMatchesSelector ||
       Element.prototype.msMatchesSelector;
   }
-})();
-;
+})();;
 let map;
 function initMap() {
   //var map = new google.maps.Map(document.getElementById("map"), options);
@@ -1940,6 +1937,10 @@ function controls() {
 }
 controls();
 
+
+//========================================================================================================================================================
+
+
 //========================================================================================================================================================
 //========================================================================================================================================================
 //========================================================================================================================================================
@@ -2218,6 +2219,7 @@ async function form_submit(e) {
         },
       });
       form_clean(form);
+		setTimeout(body_lock_remove, 2500);
     }
   } else {
     let form_error = form.querySelectorAll("._error");
